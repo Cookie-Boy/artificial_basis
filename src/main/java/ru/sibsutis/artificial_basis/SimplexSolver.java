@@ -602,9 +602,9 @@ public class SimplexSolver {
         if (secondSolution != null) {
             System.out.println("\nThere are infinitely many optimal solutions.");
             System.out.println("The general form of the solutions can be represented as:");
-            System.out.println("λ * X₁ + (1-λ) * X₂, where 0 ≤ λ ≤ 1");
-            System.out.printf("X₁ = %s%n", formatSolution(firstSolution));
-            System.out.printf("X₂ = %s%n", formatSolution(secondSolution));
+            System.out.println("l * x1 + (1 - l) * x2, where 0 <= l <= 1");
+            System.out.printf("x1 = %s%n", formatSolution(firstSolution));
+            System.out.printf("x2 = %s%n", formatSolution(secondSolution));
 
             Fraction z = simplexTable.getZRow().getLast();
             if (goal == Goal.MIN) {
@@ -630,10 +630,10 @@ public class SimplexSolver {
             if (delta.equals(Fraction.ZERO)) {
                 varExprs.add(x2.toString());
             } else if (x2.equals(Fraction.ZERO)) {
-                varExprs.add(delta + "λ");
+                varExprs.add(delta + "l");
             } else {
                 String sign = delta.compareTo(Fraction.ZERO) > 0 ? "+" : "-";
-                varExprs.add(String.format("%s %s %sλ", x2, sign, delta.abs()));
+                varExprs.add(String.format("%s %s %sl", x2, sign, delta.abs()));
             }
         }
         return varExprs;
